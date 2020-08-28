@@ -4,5 +4,5 @@
 venv
 venv_unix
 
-tests/__pycache__
-holo_schedule_api/__pycache__
+*/__pycache__
+holo_schedule_api/*/__pycache__

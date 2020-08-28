@@ -8,3 +8,7 @@ class Schedule:
         self.member = member
         self.youtube_url = youtube_url
 
+    def to_dict(self):
+        return {"time": self.time,
+                "member": self.member,
+                "youtube_url": self.youtube_url}
