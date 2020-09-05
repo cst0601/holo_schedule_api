@@ -10,3 +10,7 @@ class WebService(FlaskView):
     @route("/schedules", methods=["GET"])
     def get_schedules(self):
         return jsonify(self.crawler.get_schedules()), 200
+
+    @route("/schedules/today", methods=["GET"])
+    def get_today_schedules(self):
+        return jsonify(self.crawler.get_today_scheduels()), 200

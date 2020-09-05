@@ -35,9 +35,9 @@ class TestCrawler:
         date_schedules = self.crawler.get_date_schedules(container_soup)
 
         assert 3 == len(date_schedules)
-        assert "08/26(水)" == date_schedules[0].date
-        assert "08/27(木)" == date_schedules[1].date
-        assert "08/28(金)" == date_schedules[2].date
+        assert "08/26" == date_schedules[0].date
+        assert "08/27" == date_schedules[1].date
+        assert "08/28" == date_schedules[2].date
         assert "天音かなた" == date_schedules[0].schedules[0].member
         assert "00:00" == date_schedules[0].schedules[0].time
         assert "猫又おかゆ" == date_schedules[2].schedules[0].member
@@ -48,9 +48,9 @@ class TestCrawler:
         assert 0 == container_tags[0][0]
         assert 4 == container_tags[1][0]
         assert 16 == container_tags[2][0]
-        assert "08/26(水)" == container_tags[0][1]
-        assert "08/27(木)" == container_tags[1][1]
-        assert "08/28(金)" == container_tags[2][1]
+        assert "08/26" == container_tags[0][1]
+        assert "08/27" == container_tags[1][1]
+        assert "08/28" == container_tags[2][1]
 
     def test_generate_schedule(self, schedule_soup):
         schedule = self.crawler.generate_schedule(schedule_soup)

@@ -1,6 +1,6 @@
 import requests
 import re
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 
 from bs4 import BeautifulSoup
@@ -24,11 +24,28 @@ class Crawler:
 
         schedule_dict = {
             "update_time": 
-            self.last_update_time.strftime("%Y-%m-%d %H:%M:%S")
+            self.last_update_time.strftime("%Y-%m-%d %H:%M:%S"),
         }
         schedule_dict["schedule"] = [date_schedules.to_dict() for date_schedules in self.schedules]
 
         return schedule_dict
+
+    def get_today_scheduels(self):
+        date_now = datetime.now(timezone(timedelta(hours=9)))
+        schedule_dict = self.get_schedules()
+
+        def get_today_schedule():
+            for schedule in schedule_dict["schedule"]:
+                if schedule["date"] == date_now.strftime("%m/%d"):
+                    return schedule
+            return None
+
+        today_schedule_dict = {
+            "udpate_time": schedule_dict["update_time"],
+            "schedule": get_today_schedule()
+        }
+
+        return today_schedule_dict
 
     def crawl(self):
         response = requests.get(URL)
@@ -61,7 +78,8 @@ class Crawler:
 
             if time_banner:
                 removed_return = re.sub("\r", "", time_banner.div.text) # difference between test and actual web content
-                date_tags.append((i, re.sub("\n\s+", "", removed_return)))
+                removed_return = re.sub("\n\s+", "", removed_return)
+                date_tags.append((i, removed_return[:5]))   # remove week nomination
         
         return date_tags
 
