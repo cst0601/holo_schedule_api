@@ -41,7 +41,7 @@ class Crawler:
             return None
 
         today_schedule_dict = {
-            "udpate_time": schedule_dict["update_time"],
+            "update_time": schedule_dict["update_time"],
             "schedule": get_today_schedule()
         }
 
