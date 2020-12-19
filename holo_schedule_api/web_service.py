@@ -22,10 +22,12 @@ class WebService(FlaskView):
             return jsonify(
                 self.crawler.get_schedules(self.region_url[region_code])), 200
 
+    @route("/schedules/today", methods=["GET"])
     @route("<string:region_code>/schedules/today", methods=["GET"])
     def get_today_schedules(self, region_code=None):
         if region_code == None:
-            return jsonify(self.crawler.get_schedules()), 200
+            print("region code unspecified")
+            return jsonify(self.crawler.get_today_schedules()), 200
         elif self.region_url[region_code] != None:
             return jsonify(
                 self.crawler.get_today_schedules(
