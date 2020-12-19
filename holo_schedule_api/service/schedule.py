@@ -1,5 +1,3 @@
-
-
 class Schedule:
     """ Hololive schedule structre data
     """
@@ -9,6 +7,8 @@ class Schedule:
         self.youtube_url = youtube_url
 
     def to_dict(self):
-        return {"time": self.time,
-                "member": self.member,
-                "youtube_url": self.youtube_url}
+        return {
+            "time": self.time,
+            "member": self.member,
+            "youtube_url": self.youtube_url
+        }

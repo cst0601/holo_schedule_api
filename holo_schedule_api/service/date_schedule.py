@@ -1,5 +1,3 @@
-
-
 class DateSchedule:
     """ Schedules of a date
     """
@@ -12,8 +10,10 @@ class DateSchedule:
 
     def to_dict(self):
         return {
-            "date": self.date,
+            "date":
+            self.date,
             "schedules": [
-                schedule.to_dict() for schedule in self.schedules if self.schedules != None 
+                schedule.to_dict() for schedule in self.schedules
+                if self.schedules != None
             ]
         }
