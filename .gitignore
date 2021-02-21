@@ -6,3 +6,4 @@ venv_unix
 
 */__pycache__
 holo_schedule_api/*/__pycache__
+holo_schedule_api/credentials
