@@ -7,5 +7,3 @@ class TestScheduleCache:
 
     def teardown_method(self):
         pass
-
-    

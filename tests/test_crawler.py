@@ -11,15 +11,15 @@ def container_soup():
     containers = None
     with open("tests/schedule_all_raw.html", "r") as file:
         soup = BeautifulSoup(file.read(), "html.parser")
-        containers = soup.find("div", class_="tab-pane show active"
-            ).find_all("div", class_="container", recursive=False)
+        containers = soup.find("div", class_="tab-pane show active").find_all(
+            "div", class_="container", recursive=False)
     return containers
 
 
 @pytest.fixture
 def schedule_soup():
     schedule = None
-    with open("tests/schedule_raw.html", "r") as file: 
+    with open("tests/schedule_raw.html", "r") as file:
         schedule = BeautifulSoup(file.read(), "html.parser")
     return schedule
 
@@ -58,4 +58,3 @@ class TestCrawler:
         assert schedule.member == "獅白ぼたん"
         assert schedule.time == "01:59"
         assert schedule.youtube_url == "https://www.youtube.com/watch?v=vgX_7SD8Qts"
-
