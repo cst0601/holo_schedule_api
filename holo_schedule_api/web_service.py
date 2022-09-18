@@ -5,6 +5,7 @@ from holo_schedule_api.service.crawler import Crawler
 
 
 class WebService(FlaskView):
+
     def __init__(self):
         self.crawler = Crawler()
         self.region_url = {

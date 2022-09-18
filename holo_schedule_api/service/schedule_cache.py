@@ -8,6 +8,7 @@ class ScheduleCache:
     """ Cache of Hololive schedule
         region_code is one of the three groups of Hololive: Hololive, EN, ID
     """
+
     def __init__(self, region_code: str, schedules: List[DateSchedule] = None):
         self.region_code = region_code
         self.schedules = schedules

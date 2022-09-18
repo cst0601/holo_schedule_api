@@ -12,6 +12,7 @@ URL = "https://schedule.hololive.tv/lives/"
 
 
 class Crawler:
+
     def __init__(self):
         self.schedule_cache = {
             "hololive": ScheduleCache("Hololive", self.crawl("hololive")),
@@ -58,7 +59,7 @@ class Crawler:
         member = element.find("div", class_="col text-right name").text.strip()
         time = element.find(
             "div",
-            class_="col-5 col-sm-5 col-md-5 text-left datetime").text.strip()
+            class_="col-4 col-sm-4 col-md-4 text-left datetime").text.strip()
 
         return Schedule(time, member, youtube_url)
 

@@ -25,6 +25,7 @@ def schedule_soup():
 
 
 class TestCrawler:
+
     def setup_class(self):
         self.crawler = Crawler()
 
@@ -34,27 +35,24 @@ class TestCrawler:
     def test_get_date_schedules(self, container_soup):
         date_schedules = self.crawler.get_date_schedules(container_soup)
 
-        assert 3 == len(date_schedules)
-        assert "08/26" == date_schedules[0].date
-        assert "08/27" == date_schedules[1].date
-        assert "08/28" == date_schedules[2].date
-        assert "天音かなた" == date_schedules[0].schedules[0].member
+        assert 2 == len(date_schedules)
+        assert "09/18" == date_schedules[0].date
+        assert "09/19" == date_schedules[1].date
+        assert "鷹嶺ルイ" == date_schedules[0].schedules[0].member
         assert "00:00" == date_schedules[0].schedules[0].time
-        assert "猫又おかゆ" == date_schedules[2].schedules[0].member
+        assert "Kiara" == date_schedules[1].schedules[0].member
 
     def test_get_date_tags(self, container_soup):
         container_tags = self.crawler.get_date_tags(container_soup)
 
         assert 0 == container_tags[0][0]
         assert 4 == container_tags[1][0]
-        assert 16 == container_tags[2][0]
-        assert "08/26" == container_tags[0][1]
-        assert "08/27" == container_tags[1][1]
-        assert "08/28" == container_tags[2][1]
+        assert "09/18" == container_tags[0][1]
+        assert "09/19" == container_tags[1][1]
 
     def test_generate_schedule(self, schedule_soup):
         schedule = self.crawler.generate_schedule(schedule_soup)
 
-        assert schedule.member == "獅白ぼたん"
-        assert schedule.time == "01:59"
-        assert schedule.youtube_url == "https://www.youtube.com/watch?v=vgX_7SD8Qts"
+        assert schedule.member == "鷹嶺ルイ"
+        assert schedule.time == "00:00"
+        assert schedule.youtube_url == "https://www.youtube.com/watch?v=TJ-UhnHZwgg"
