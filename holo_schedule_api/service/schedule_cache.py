@@ -30,7 +30,7 @@ class ScheduleCache:
             "region":
             self.region_code,
             "update_time":
-            self.last_update_time.strftime("%Y-%m-%d %H:%M:%S"),
+            self.last_update_time.strftime("%Y-%m-%dT%H:%M:%SZ"),
             "schedule":
             [date_schedules.to_dict() for date_schedules in self.schedules]
         }
